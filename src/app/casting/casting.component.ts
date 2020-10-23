@@ -17,5 +17,4 @@ export class CastingComponent implements OnInit {
   log() {
     console.log(this.text);
   }
-
 }
