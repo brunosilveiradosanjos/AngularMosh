@@ -1,0 +1,25 @@
+.objects {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "post twiter image";
+}
+
+.post {
+  /* background: blue; */
+  grid-area: post;
+}
+
+.twitter {
+  /* background: orange; */
+  grid-area: twiter;
+}
+
+.image {
+  /* background: olivedrab; */
+  grid-area: image;
+}
+
+.btn {
+  color: white;
+}
