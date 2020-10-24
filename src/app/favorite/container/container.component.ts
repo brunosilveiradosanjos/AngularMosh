@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-container',
@@ -7,21 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
+  @Input() postObject: any;
+  favorite: string;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.postObject.isFavorite)
+    console.log(this.postObject.title)
+    this.checkFavorite();
   }
 
-  isSelected = false
-  favorite = "Favorite";
 
   ChangeFavorite() {
-    this.isSelected = !this.isSelected;
-    if (this.isSelected) {
-      this.favorite = "Unfavorite";
-    } else {
-      this.favorite = "Favorite";
-    }
+    this.postObject.isFavorite = !this.postObject.isFavorite;
+    this.checkFavorite();
+  }
+
+  checkFavorite() {
+    this.favorite = this.postObject.isFavorite == false ? "Favorite" : "Unfavorite";
   }
 
 }
