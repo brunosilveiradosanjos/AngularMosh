@@ -1,0 +1,17 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+i {
+  cursor: pointer;
+}
+
+.like{
+  display:flex;
+}
+
+.pink {
+  color: #ff1493;
+}
+
+.grey {
+  color: #ccc;
+}

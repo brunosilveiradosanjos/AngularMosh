@@ -1,5 +1,6 @@
 <div>
   <h3>{{postObject.title}}</h3>
   <p>{{postObject.message}}</p>
-  <button (click)="ChangeFavorite()" class="btn btn-primary">{{favorite}}</button>
+  <button (click)="ChangeFavorite()" [class.btn-primary]="postObject.isFavorite"
+    [class.btn-secondary]="!postObject.isFavorite" class="btn">{{favorite}}</button>
 </div>

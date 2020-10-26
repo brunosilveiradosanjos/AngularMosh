@@ -1,0 +1,4 @@
+<div class="like">
+  <i (click)="likeButton()" class="material-icons" [ngClass]="this.likes.liked ? 'pink' : 'grey'">favorite</i>
+  <p>{{this.likes.likeCounter}}</p>
+</div>

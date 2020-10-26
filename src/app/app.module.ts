@@ -10,6 +10,8 @@ import { FavoriteComponent } from './favorite/favorite.component';
 import { ContainerComponent } from './favorite/container/container.component';
 import { CastingComponent } from './casting/casting.component';
 import { FormsModule } from '@angular/forms';
+import { LikeComponent } from './like/like.component';
+import { LikeContainerComponent } from './like/container/container.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FavoriteComponent,
     ContainerComponent,
-    CastingComponent
+    CastingComponent,
+    LikeComponent,
+    LikeContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +32,7 @@ import { FormsModule } from '@angular/forms';
       { path: 'authors', component: AuthorsComponent },
       { path: 'favorite', component: FavoriteComponent },
       { path: 'casting', component: CastingComponent },
+      { path: 'like', component: LikeComponent }
     ])
   ],
   providers: [AuthorsService],
