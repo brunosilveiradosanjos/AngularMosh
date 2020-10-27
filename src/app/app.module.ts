@@ -12,6 +12,8 @@ import { CastingComponent } from './casting/casting.component';
 import { FormsModule } from '@angular/forms';
 import { LikeComponent } from './like/like.component';
 import { LikeContainerComponent } from './like/container/container.component';
+import { ZippyComponent } from './zippy/zippy.component';
+import { ZippyContainerComponent } from './zippy/container/container.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { LikeContainerComponent } from './like/container/container.component';
     ContainerComponent,
     CastingComponent,
     LikeComponent,
-    LikeContainerComponent
+    LikeContainerComponent,
+    ZippyComponent,
+    ZippyContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { LikeContainerComponent } from './like/container/container.component';
       { path: 'authors', component: AuthorsComponent },
       { path: 'favorite', component: FavoriteComponent },
       { path: 'casting', component: CastingComponent },
-      { path: 'like', component: LikeComponent }
+      { path: 'like', component: LikeComponent },
+      { path: 'zippy', component: ZippyComponent }
     ])
   ],
   providers: [AuthorsService],

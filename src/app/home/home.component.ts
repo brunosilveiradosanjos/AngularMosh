@@ -7,5 +7,5 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent {
 
-  contents = ['authors', 'favorite', 'casting', 'like'];
+  contents = ['authors', 'favorite', 'casting', 'like', 'zippy'];
 }

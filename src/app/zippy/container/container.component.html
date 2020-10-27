@@ -1,0 +1,10 @@
+<div class="zippy">
+  <div class="zippy-heading" (click)="onClick()" [class.expanded]="isExpanded">
+    {{content.header}}
+    <i class="material-icons">{{arrowIcon}}</i>
+  </div>
+  <div *ngIf="isExpanded" class="zippy-body">
+    <ng-content></ng-content>
+    {{content.body}}
+  </div>
+</div>

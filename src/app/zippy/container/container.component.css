@@ -1,0 +1,24 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+.zippy{
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  /* margin: 0; */
+  padding: 0;
+  margin: 1rem;
+}
+
+.zippy-heading {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 2rem;
+}
+
+.zippy-body {
+cursor: default;
+padding: 2rem;
+}
+
+.expanded {
+  background: #f0f0f0;
+}
