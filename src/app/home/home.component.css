@@ -5,3 +5,7 @@ ul {
 ul{
   list-style-type: none;
 }
+
+button {
+  width: 100px;
+}

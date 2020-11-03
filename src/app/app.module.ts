@@ -14,6 +14,7 @@ import { LikeComponent } from './like/like.component';
 import { LikeContainerComponent } from './like/container/container.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ZippyContainerComponent } from './zippy/container/container.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ZippyContainerComponent } from './zippy/container/container.component';
     LikeComponent,
     LikeContainerComponent,
     ZippyComponent,
-    ZippyContainerComponent
+    ZippyContainerComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { ZippyContainerComponent } from './zippy/container/container.component';
       { path: 'favorite', component: FavoriteComponent },
       { path: 'casting', component: CastingComponent },
       { path: 'like', component: LikeComponent },
-      { path: 'zippy', component: ZippyComponent }
+      { path: 'zippy', component: ZippyComponent },
+      { path: 'form', component: FormComponent }
     ])
   ],
   providers: [AuthorsService],
