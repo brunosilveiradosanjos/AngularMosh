@@ -9,12 +9,13 @@ import { HomeComponent } from './home/home.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { ContainerComponent } from './favorite/container/container.component';
 import { CastingComponent } from './casting/casting.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LikeComponent } from './like/like.component';
 import { LikeContainerComponent } from './like/container/container.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ZippyContainerComponent } from './zippy/container/container.component';
 import { FormComponent } from './form/form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -28,19 +29,22 @@ import { FormComponent } from './form/form.component';
     LikeContainerComponent,
     ZippyComponent,
     ZippyContainerComponent,
-    FormComponent
+    FormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'authors', component: AuthorsComponent },
       { path: 'favorite', component: FavoriteComponent },
       { path: 'casting', component: CastingComponent },
       { path: 'like', component: LikeComponent },
       { path: 'zippy', component: ZippyComponent },
-      { path: 'form', component: FormComponent }
+      { path: 'form', component: FormComponent },
+      { path: 'reactive', component: ReactiveFormComponent }
     ])
   ],
   providers: [AuthorsService],

@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <label for="oldPass">Old Password</label>
+    <input formControlName="oldPass" id="oldPass" type="text" class="form-control">
+    <div *ngIf="oldPass.touched && oldPass.invalid" class="alert alert-danger">
+      <div *ngIf="oldPass.errors.invalidOldPassword">Old Password is invalid</div>
+      <div *ngIf="oldPass.errors.required">Old Password is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="newPass">New Password</label>
+    <input formControlName="newPass" id="newPass" type="text" class="form-control">
+    <div *ngIf="newPass.touched && newPass.invalid" class="alert alert-danger">
+      <div *ngIf="newPass.errors.required">New Password is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmation">Confirm Password</label>
+    <input formControlName="confirmation" id="confirmation" type="text" class="form-control">
+    <div *ngIf="confirmation.touched && confirmation.invalid" class="alert alert-danger">
+      <div *ngIf="confirmation.errors.required">New Password is required</div>
+    </div>
+    <div *ngIf="confirmation.valid && form.invalid && form.errors.passwordsShouldMatch" class="alert alert-danger">
+      Should Match
+    </div>
+  </div>
+
+  <button class="btn btn-primary" [disabled]="form.invalid">Change Password</button>
+
+</form>
