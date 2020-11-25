@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ZippyContainerComponent } from './zippy/container/container.component';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
     ZippyComponent,
     ZippyContainerComponent,
     FormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: 'authors', component: AuthorsComponent },
       { path: 'favorite', component: FavoriteComponent },
@@ -44,7 +48,8 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
       { path: 'like', component: LikeComponent },
       { path: 'zippy', component: ZippyComponent },
       { path: 'form', component: FormComponent },
-      { path: 'reactive', component: ReactiveFormComponent }
+      { path: 'reactive', component: ReactiveFormComponent },
+      { path: 'posts', component: PostsComponent }
     ])
   ],
   providers: [AuthorsService],
