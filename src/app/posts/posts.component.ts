@@ -22,17 +22,36 @@ export class PostsComponent implements OnInit {
   }
 
   createPosts(input: HTMLInputElement) {
-    let post = { title: input.value };
+    let post: any = { title: input.value };
     // send converted post to the server
     this.http.post(this.url, JSON.stringify(post))
       .subscribe(response => {
-        // get the id from server
-        post['id'] = response.id;
+
+        // get the id from server and storing into posts with title = response value
+        post.id = response;
+        console.log(post);
         // add post to firt position of posts
         this.posts.splice(0, 0, post);
-        // console.log(post['id']);
       })
   }
+
+  updatePost(post) {
+    // patch is only for changing some data in the object PUT is to substitute the object
+    this.http.patch(`${this.url}/${post.id}`, JSON.stringify({ isRead: true }))
+      .subscribe(response => console.log(response));
+    // this.http.patch(this.url, JSON.stringify(post));
+    console.log(post);
+  }
+
+  deletePost(post) {
+    this.http.delete(`${this.url}/${post.id}`)
+      .subscribe(response => {
+        let index = this.posts.indexOf(post);
+        this.posts.splice(index, 1);
+        console.log(this.posts);
+      })
+  }
+
   ngOnInit() {
   }
 
