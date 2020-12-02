@@ -18,6 +18,8 @@ import { ZippyContainerComponent } from './zippy/container/container.component';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +54,7 @@ import { PostsComponent } from './posts/posts.component';
       { path: 'posts', component: PostsComponent }
     ])
   ],
-  providers: [AuthorsService],
+  providers: [PostService, AuthorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
