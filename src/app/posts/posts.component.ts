@@ -30,15 +30,18 @@ export class PostsComponent implements OnInit {
         })
   }
 
-  // updatePost(post) {
-  //   this.service.updatePost(post)
-  //     .subscribe(
-  //       response => console.log(response),
-  //       error => {
-  //         alert(`updatePost ${post} - An unexpected error occurred.`);
-  //       });
-  //   // this.http.patch(this.url, JSON.stringify(post));
-  // }
+  updatePost(post) {
+    this.service.updatePost(post)
+      .subscribe(
+        response => {
+          console.log(response)
+          this.posts = response;
+        },
+        error => {
+          alert(`updatePost ${JSON.stringify(post)} - An unexpected error occurred.`);
+        });
+    // this.http.patch(this.url, JSON.stringify(post));
+  }
 
   deletePost(post) {
     this.service.deletePost(post.id)

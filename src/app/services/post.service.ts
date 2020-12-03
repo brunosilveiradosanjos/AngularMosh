@@ -23,7 +23,9 @@ export class PostService {
   }
 
   updatePost(post) {
+    console.log(`updatePost - ${JSON.stringify(post)}`)
     // patch is only for changing some data in the object PUT is to substitute the object
-    return this.http.patch(`${this.url}/${post.id}`, JSON.stringify({ isRead: true }))
+    // return this.http.patch(`${this.url}/${post.id}`, JSON.stringify({ isRead: true }))
+    return this.http.put(this.url, post);
   }
 }
