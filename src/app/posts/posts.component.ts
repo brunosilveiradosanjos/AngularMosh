@@ -19,38 +19,52 @@ export class PostsComponent implements OnInit {
 
   createPosts(input: HTMLInputElement) {
     let post: any = { title: input.value };
-    // send converted post to the server
     this.service.createPost(post)
-      .subscribe(response => {
-        // get the id from server and storing into posts with title = response value
-        post.id = response;
-        console.log(post);
-        // add post to firt position of posts
-        this.posts.splice(0, 0, post);
-      })
+      .subscribe(
+        response => {
+          this.posts = response;
+        },
+        error => {
+          alert(`createPosts ${post} - An unexpected error occurred.`);
+          console.log(error);
+        })
   }
 
-  updatePost(post) {
-    this.service.updatePost(post)
-      .subscribe(response => console.log(response));
-    // this.http.patch(this.url, JSON.stringify(post));
-    console.log(post);
-  }
+  // updatePost(post) {
+  //   this.service.updatePost(post)
+  //     .subscribe(
+  //       response => console.log(response),
+  //       error => {
+  //         alert(`updatePost ${post} - An unexpected error occurred.`);
+  //       });
+  //   // this.http.patch(this.url, JSON.stringify(post));
+  // }
 
   deletePost(post) {
     this.service.deletePost(post.id)
-      .subscribe(response => {
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      })
+      .subscribe(
+        response => {
+          this.posts = response;
+        },
+        (error: Response) => {
+          console.log(error)
+          if (error.status === 404) {
+            alert('This post has already been deleted')
+          } else {
+            console.log(error);
+          }
+
+        })
   }
 
   ngOnInit() {
     this.service.getPost()
       .subscribe(response => {
-        // console.log(response)
         this.posts = response;
-      });
+      },
+        error => {
+          alert('ngOnInit - An unexpected error occurred.')
+        });
   }
 
 }
