@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppError } from '../common/validators/app-error';
+import { BadInput } from '../common/validators/bad-input';
 import { NotFoundError } from '../common/validators/not-found';
 
 @Injectable({
@@ -19,7 +20,14 @@ export class PostService {
   }
 
   createPost(post) {
-    return this.http.post(this.url, post);
+    return this.http.post(this.url, post).pipe(
+      catchError((error: Response) => {
+        if (error.status == 400) {
+          return throwError(new BadInput(error.json()))
+        }
+        return throwError(new AppError(error.json()))
+      })
+    );
   }
 
   deletePost(id) {
