@@ -1,5 +1,9 @@
 import { HttpClient, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { AppError } from '../common/validators/app-error';
+import { NotFoundError } from '../common/validators/not-found';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +23,13 @@ export class PostService {
   }
 
   deletePost(id) {
-    return this.http.delete(`${this.url}?id=${id}`);
+    return this.http.delete(`${this.url}?id=${id}`).pipe(
+      catchError((error: Response) => {
+        if (error.status == 404)
+          return throwError(new NotFoundError());
+        return throwError(new AppError(error));
+      })
+    )
   }
 
   updatePost(post) {

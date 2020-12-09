@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { jsonpCallbackContext } from '@angular/common/http/src/module';
 import { Component, OnInit } from '@angular/core';
 import { forEach } from '@angular/router/src/utils/collection';
+import { NotFoundError } from '../common/validators/not-found';
 import { PostService } from '../services/post.service';
 
 @Component({
@@ -44,14 +45,13 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(post) {
-    this.service.deletePost(post.id)
+    this.service.deletePost(333)
       .subscribe(
         response => {
           this.posts = response;
         },
         (error: Response) => {
-          console.log(error)
-          if (error.status === 404) {
+          if (error instanceof NotFoundError) {
             alert('This post has already been deleted')
           } else {
             console.log(error);
