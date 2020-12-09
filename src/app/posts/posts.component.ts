@@ -20,9 +20,9 @@ export class PostsComponent implements OnInit {
 
   }
 
-  createPosts(input: HTMLInputElement) {
+  create(input: HTMLInputElement) {
     let post: any = { title: input.value };
-    this.service.createPost(post)
+    this.service.create(post)
       .subscribe(
         response => {
           this.posts = response;
@@ -35,19 +35,19 @@ export class PostsComponent implements OnInit {
         })
   }
 
-  updatePost(post) {
-    this.service.updatePost(post)
+  update(post) {
+    this.service.update(post)
       .subscribe(
         response => {
           console.log(response)
           this.posts = response;
         })
-    // alert(`updatePost ${JSON.stringify(post)} - An unexpected error occurred.`);
+    // alert(`update ${JSON.stringify(post)} - An unexpected error occurred.`);
     // this.http.patch(this.url, JSON.stringify(post));
   }
 
-  deletePost(post) {
-    this.service.deletePost(post.id)
+  delete(post) {
+    this.service.delete(post.id)
       // this.service.deletePost(3000)
       .subscribe(
         response => {
@@ -65,7 +65,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getPost()
+    this.service.getAll()
       .subscribe(response => {
         this.posts = response;
       });
