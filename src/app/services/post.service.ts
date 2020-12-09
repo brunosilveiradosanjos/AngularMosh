@@ -17,33 +17,33 @@ export class PostService {
 
   getPost() {
     return this.http.get(this.url)
+      .pipe(catchError(this.handleError));
   }
 
   createPost(post) {
-    return this.http.post(this.url, post).pipe(
-      catchError((error: Response) => {
-        if (error.status == 400) {
-          return throwError(new BadInput(error.json()))
-        }
-        return throwError(new AppError(error.json()))
-      })
-    );
+    return this.http.post(this.url, post)
+      .pipe(catchError(this.handleError));
   }
 
   deletePost(id) {
-    return this.http.delete(`${this.url}?id=${id}`).pipe(
-      catchError((error: Response) => {
-        if (error.status == 404)
-          return throwError(new NotFoundError());
-        return throwError(new AppError(error));
-      })
-    )
+    return this.http.delete(`${this.url}?id=${id}`)
+      .pipe(catchError(this.handleError))
   }
 
   updatePost(post) {
-    console.log(`updatePost - ${JSON.stringify(post)}`)
     // patch is only for changing some data in the object PUT is to substitute the object
     // return this.http.patch(`${this.url}/${post.id}`, JSON.stringify({ isRead: true }))
-    return this.http.put(this.url, post);
+    return this.http.put(this.url, post)
+      .pipe(catchError(this.handleError));
+  }
+
+  private handleError(error: Response) {
+    if (error.status == 400) {
+      return throwError(new BadInput(error.json()))
+    }
+    if (error.status == 404) {
+      return throwError(new NotFoundError());
+    }
+    return throwError(new AppError(error));
   }
 }
