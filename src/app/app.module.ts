@@ -20,6 +20,8 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostService } from './services/post.service';
 import { AppErrorHandler } from './common/validators/app-error-handler';
+import { GithubFollowersComponent } from './github-followers/github-followers.component';
+import { GithubFollowersService } from './services/github-followers.service';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { AppErrorHandler } from './common/validators/app-error-handler';
     ZippyContainerComponent,
     FormComponent,
     ReactiveFormComponent,
-    PostsComponent
+    PostsComponent,
+    GithubFollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +55,19 @@ import { AppErrorHandler } from './common/validators/app-error-handler';
       { path: 'zippy', component: ZippyComponent },
       { path: 'form', component: FormComponent },
       { path: 'reactive', component: ReactiveFormComponent },
-      { path: 'posts', component: PostsComponent }
+      { path: 'posts', component: PostsComponent },
+      { path: 'followers', component: GithubFollowersComponent }
     ])
   ],
-  providers: [PostService, AuthorsService, { provide: ErrorHandler, useClass: AppErrorHandler }],
+  providers: [
+    PostService,
+    AuthorsService,
+    GithubFollowersService,
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

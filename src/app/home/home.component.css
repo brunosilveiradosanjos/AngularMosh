@@ -1,5 +1,6 @@
-ul {
-  display: flex;
+* {
+  padding: 0.5rem 0;
+  margin:0;
 }
 
 ul{
@@ -8,4 +9,13 @@ ul{
 
 button {
   width: 100px;
+}
+
+.container {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1rem 1rem 1rem 1rem 1rem;
+  text-align: center;
+  padding: 0;
+  margin:0;
 }
